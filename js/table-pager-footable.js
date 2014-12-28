@@ -143,7 +143,8 @@
             }
 
             if (!data) {
-                $this.data('st.tablepagerfootable', (data = new TablePagerFootable(this)));
+                data = new TablePagerFootable(this);
+                $this.data('st.tablepagerfootable', data);
             }
 
             if (typeof option === 'string') {
