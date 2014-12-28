@@ -30,6 +30,7 @@
      */
     function onPagerRefreshed(event) {
         event.data.footable.resize();
+        event.data.footable.redraw();
     }
 
     /**
