@@ -78,14 +78,22 @@
         </table>
     </div>
 </div>
-
-<script src="../bower_components/jquery/dist/jquery.js"></script>
-<script src="../bower_components/footable/js/footable.js"></script>
-<script src="../bower_components/sonatra-jquery-table-pager/js/table-pager.js"></script>
-<script src="../bower_components/sonatra-jquery-table-pager/js/locale/table-pager-fr.js"></script>
-<script src="../js/table-pager-footable.js"></script>
 <script>
-    $('#table-example').footable({responsive: {enabled: true}});
+    var require = {
+        paths: {
+            'jquery': '../bower_components/jquery/dist/jquery',
+            'footable': '../bower_components/footable/js/footable',
+            'sonatra-jquery-table-pager': '../bower_components/sonatra-jquery-table-pager/js/table-pager',
+            'sonatra-jquery-table-pager-locale': '../bower_components/sonatra-jquery-table-pager/js/locale',
+            'sonatra-jquery-table-pager-footable': '../js/table-pager-footable'
+        },
+        deps: ['sonatra-jquery-table-pager-footable', 'sonatra-jquery-table-pager-locale/table-pager-fr'],
+        callback: function () {
+            $('#table-example').footable();
+            $(window).trigger('load');
+        }
+    };
 </script>
+<script src="../bower_components/requirejs/require.js" async="async"></script>
 </body>
 </html>
