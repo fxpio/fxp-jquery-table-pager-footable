@@ -87,6 +87,9 @@
             'sonatra-jquery-table-pager-locale': '../bower_components/sonatra-jquery-table-pager/js/locale',
             'sonatra-jquery-table-pager-footable': '../js/table-pager-footable'
         },
+        shim: {
+            'footable': ['jquery']
+        },
         deps: ['sonatra-jquery-table-pager-footable', 'sonatra-jquery-table-pager-locale/table-pager-fr'],
         callback: function () {
             $('#table-example').footable();
