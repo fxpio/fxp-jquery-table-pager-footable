@@ -16,14 +16,14 @@
   "license": "MIT",
   "homepage": "https://github.com/sonatra/sonatra-jquery-table-pager-footable",
   "dependencies": {
-    "jquery": ">=1.11.0",
-    "footable": "2.0.*",
+    "jquery": "^2.1.0",
+    "footable": "^2.0.0",
     "sonatra-jquery-table-pager": "latest"
   },
   "devDependencies": {
     "requirejs": "~2",
-    "bootstrap": ">=3.0",
-    "font-awesome": ">=4.2"
+    "bootstrap": "3.*",
+    "font-awesome": "4.*"
   },
   "ignore": [
     "examples",
