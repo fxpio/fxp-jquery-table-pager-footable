@@ -69,10 +69,16 @@ module.exports = function (grunt) {
                     "css/table-sort.css":  "bower_components/sonatra-jquery-table-pager/less/table-sort.less"
                 }
             }
+        },
+        nodemon: {
+            dev: {
+                script: 'examples/ajax.js'
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-nodemon');
 
     grunt.registerTask('serve', function () {
         grunt.task.run([
