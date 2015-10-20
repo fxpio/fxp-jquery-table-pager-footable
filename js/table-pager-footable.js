@@ -41,8 +41,14 @@
      * @private
      */
     function onPagerRefreshed(event) {
-        event.data.footable.resize();
-        event.data.footable.redraw();
+        var footable = event.data.$table.data('footable');
+
+        if (undefined === footable) {
+            return;
+        }
+
+        footable.resize();
+        footable.redraw();
     }
 
     /**
@@ -57,12 +63,20 @@
      */
     function onFootableRowDetailUpdated(event) {
         var self = event.data,
-            $cols = self.$table.find('> thead > tr:last > th:not(:visible)'),
-            $detailNames = $(event.detail).find('div.footable-row-detail-name'),
+            footable = self.$table.data('footable'),
+            $cols,
+            $detailNames,
             $col,
             $detail,
             $icon,
             i;
+
+        if (undefined === footable) {
+            return;
+        }
+
+        $cols = self.$table.find('> thead > tr:last > th:not(:visible)');
+        $detailNames = $(event.detail).find('div.footable-row-detail-name');
 
         if ($cols.size() !== $detailNames.size()) {
             return;
@@ -104,16 +118,10 @@
     var TablePagerFootable = function (element) {
         this.$element = $(element);
         this.$table   = $('#' + this.$element.attr('data-table-id'));
-        this.footable = this.$table.data('footable');
 
-        if (undefined !== this.footable) {
-            this.$table
-                .on('table-pager-refreshed.st.tablepagerfootable', null, this, onPagerRefreshed)
-                .on('footable_row_detail_updated.st.tablepagerfootable', null, this, onFootableRowDetailUpdated);
-
-        } else {
-            this.destroy();
-        }
+        this.$table
+            .on('table-pager-refreshed.st.tablepagerfootable', null, this, onPagerRefreshed)
+            .on('footable_row_detail_updated.st.tablepagerfootable', null, this, onFootableRowDetailUpdated);
     },
         old;
 
