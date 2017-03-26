@@ -82,13 +82,13 @@
     var require = {
         paths: {
             'jquery': '../bower_components/jquery/dist/jquery',
-            'footable': '../bower_components/footable/js/footable',
+            'footable': '../bower_components/footable',
             'sonatra-jquery-table-pager': '../bower_components/sonatra-jquery-table-pager/js/table-pager',
             'sonatra-jquery-table-pager-locale': '../bower_components/sonatra-jquery-table-pager/js/locale',
             'sonatra-jquery-table-pager-footable': '../js/table-pager-footable'
         },
         shim: {
-            'footable': ['jquery']
+            'footable/js/footable': ['jquery']
         },
         deps: ['sonatra-jquery-table-pager-footable', 'sonatra-jquery-table-pager-locale/table-pager-fr'],
         callback: function () {

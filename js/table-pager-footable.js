@@ -23,7 +23,7 @@
 
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['jquery', 'footable', 'sonatra-jquery-table-pager'], factory);
+        define(['jquery', 'footable/js/footable', 'sonatra-jquery-table-pager'], factory);
     } else {
         // Browser globals
         factory(jQuery);
