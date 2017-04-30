@@ -25,7 +25,7 @@
   "dependencies": {
     "jquery": "^2.1.0",
     "footable": "git+ssh://git@github.com/fooplugins/FooTable.git#2.0.3",
-    "@sonatra/jquery-table-pager": "^1.0.0"
+    "@sonatra/jquery-table-pager": "git+ssh://git@github.com/sonatra/sonatra-jquery-table-pager.git#master"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
