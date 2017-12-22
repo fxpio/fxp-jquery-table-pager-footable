@@ -23,9 +23,9 @@
   "engines": {},
   "main": "js/table-pager-footable.js",
   "dependencies": {
-    "jquery": "^2.1.0",
+    "@sonatra/jquery-table-pager": "git://github.com/sonatra/sonatra-jquery-table-pager.git#master",
     "footable": "git://github.com/fooplugins/FooTable.git#2.0.3",
-    "@sonatra/jquery-table-pager": "git://github.com/sonatra/sonatra-jquery-table-pager.git#master"
+    "jquery": "^2.2.0||^3.2.0"
   },
   "devDependencies": {
     "bootstrap": "^3.3.7",
