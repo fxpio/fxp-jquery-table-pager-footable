@@ -78,11 +78,11 @@
         $cols = self.$table.find('> thead > tr:last > th:not(:visible)');
         $detailNames = $(event.detail).find('div.footable-row-detail-name');
 
-        if ($cols.size() !== $detailNames.size()) {
+        if ($cols.length !== $detailNames.length) {
             return;
         }
 
-        for (i = 0; i < $detailNames.size(); i += 1) {
+        for (i = 0; i < $detailNames.length; i += 1) {
             $col = $cols.eq(i);
             $detail = $detailNames.eq(i);
             $icon = $col.find('> i.table-sort-icon');
@@ -99,7 +99,7 @@
                 $detail.attr('data-table-sort', $col.attr('data-table-sort'));
             }
 
-            if ($icon.size() > 0) {
+            if ($icon.length > 0) {
                 $detail.append($icon.clone());
             }
         }
