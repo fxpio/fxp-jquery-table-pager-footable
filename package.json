@@ -1,8 +1,8 @@
 {
-  "name": "@sonatra/jquery-table-pager-footable",
+  "name": "@fxp/jquery-table-pager-footable",
   "version": "1.0.0",
   "license": "MIT",
-  "author": "François Pluchino <francois.pluchino@sonatra.com>",
+  "author": "François Pluchino <francois.pluchino@gmail.com>",
   "contributors": [],
   "description": "A ajax table pager plugin for Footable",
   "keywords": [
@@ -12,18 +12,18 @@
     "footable",
     "jquery"
   ],
-  "homepage": "https://github.com/sonatra/sonatra-jquery-table-pager-footable",
+  "homepage": "https://github.com/fxpio/fxp-jquery-table-pager-footable",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sonatra/sonatra-jquery-table-pager-footable.git"
+    "url": "https://github.com/fxpio/fxp-jquery-table-pager-footable.git"
   },
   "bugs": {
-    "url": "https://github.com/sonatra/sonatra-jquery-table-pager-footable/issues"
+    "url": "https://github.com/fxpio/fxp-jquery-table-pager-footable/issues"
   },
   "engines": {},
   "main": "js/table-pager-footable.js",
   "dependencies": {
-    "@sonatra/jquery-table-pager": "git://github.com/sonatra/sonatra-jquery-table-pager.git#master",
+    "@fxp/jquery-table-pager": "git://github.com/fxpio/fxp-jquery-table-pager.git#master",
     "footable": "git://github.com/fooplugins/FooTable.git#2.0.3",
     "jquery": "^2.2.0||^3.2.0"
   },

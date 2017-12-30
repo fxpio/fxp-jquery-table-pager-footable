@@ -1,7 +1,7 @@
 /*
- * This file is part of the Sonatra package.
+ * This file is part of the Fxp package.
  *
- * (c) François Pluchino <francois.pluchino@sonatra.com>
+ * (c) François Pluchino <francois.pluchino@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -23,7 +23,7 @@
 
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['jquery', 'footable/js/footable', 'sonatra-jquery-table-pager'], factory);
+        define(['jquery', 'footable/js/footable', 'fxp-jquery-table-pager'], factory);
     } else {
         // Browser globals
         factory(jQuery);
@@ -120,8 +120,8 @@
         this.$table   = $('#' + this.$element.attr('data-table-id'));
 
         this.$table
-            .on('table-pager-refreshed.st.tablepagerfootable', null, this, onPagerRefreshed)
-            .on('footable_row_detail_updated.st.tablepagerfootable', null, this, onFootableRowDetailUpdated);
+            .on('table-pager-refreshed.fxp.tablepagerfootable', null, this, onPagerRefreshed)
+            .on('footable_row_detail_updated.fxp.tablepagerfootable', null, this, onFootableRowDetailUpdated);
     },
         old;
 
@@ -132,8 +132,8 @@
      */
     TablePagerFootable.prototype.destroy = function () {
         this.$table
-            .off('table-pager-refreshed.st.tablepagerfootable', onPagerRefreshed)
-            .off('footable_row_detail_updated.st.tablepagerfootable', onFootableRowDetailUpdated);
+            .off('table-pager-refreshed.fxp.tablepagerfootable', onPagerRefreshed)
+            .off('footable_row_detail_updated.fxp.tablepagerfootable', onFootableRowDetailUpdated);
 
         this.$element.removeData('st.tablepagerfootable');
     };

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-    <title>Basic example - Sonatra Jquery Table Pager</title>
+    <title>Basic example - Fxp Jquery Table Pager</title>
     <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="../node_modules/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="../node_modules/footable/css/footable.core.css" rel="stylesheet">
@@ -83,14 +83,14 @@
         paths: {
             'jquery': '../node_modules/jquery/dist/jquery',
             'footable': '../node_modules/footable',
-            'sonatra-jquery-table-pager': '../node_modules/@sonatra/jquery-table-pager/js/table-pager',
-            'sonatra-jquery-table-pager-locale': '../node_modules/@sonatra/jquery-table-pager/js/locale',
-            'sonatra-jquery-table-pager-footable': '../js/table-pager-footable'
+            'fxp-jquery-table-pager': '../node_modules/@fxp/jquery-table-pager/js/table-pager',
+            'fxp-jquery-table-pager-locale': '../node_modules/@fxp/jquery-table-pager/js/locale',
+            'fxp-jquery-table-pager-footable': '../js/table-pager-footable'
         },
         shim: {
             'footable/js/footable': ['jquery']
         },
-        deps: ['sonatra-jquery-table-pager-footable', 'sonatra-jquery-table-pager-locale/table-pager-fr'],
+        deps: ['fxp-jquery-table-pager-footable', 'fxp-jquery-table-pager-locale/table-pager-fr'],
         callback: function () {
             $('#table-example').footable();
             $(window).trigger('load');

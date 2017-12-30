@@ -8,7 +8,7 @@ This library require:
 
 - jquery
 - footable
-- sonatra-jquery-table-pager
+- fxp-jquery-table-pager
 - bootstrap (optional)
 - font-awesome (optional)
 
@@ -16,7 +16,7 @@ Installation
 ------------
 
 ```
-npm install @sonatra/jquery-table-pager-footable --save
+npm install @fxp/jquery-table-pager-footable --save
 ```
 
 Dev installation
