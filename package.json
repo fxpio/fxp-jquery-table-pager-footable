@@ -23,8 +23,8 @@
   "engines": {},
   "main": "js/table-pager-footable.js",
   "dependencies": {
-    "@fxp/jquery-table-pager": "git://github.com/fxpio/fxp-jquery-table-pager.git#master",
-    "footable": "git://github.com/fooplugins/FooTable.git#2.0.3",
+    "@fxp/jquery-table-pager": "github:fxpio/fxp-jquery-table-pager#master",
+    "footable": "github:fooplugins/FooTable#^2.0.3",
     "jquery": "^2.2.0||^3.2.0"
   },
   "devDependencies": {
