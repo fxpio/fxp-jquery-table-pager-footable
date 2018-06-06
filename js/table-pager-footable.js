@@ -7,199 +7,56 @@
  * file that was distributed with this source code.
  */
 
-import TablePager from '@fxp/jquery-table-pager';
-
-/*global define*/
-/*global jQuery*/
-/*global window*/
-/*global TablePagerFootable*/
+import pluginify from '@fxp/jquery-pluginify';
+import BasePlugin from '@fxp/jquery-pluginify/js/plugin';
+import $ from "jquery";
+import TablePager from "@fxp/jquery-table-pager/js/table-pager";
+import {onFootableRowDetailUpdated, onPagerRefreshed} from "./utils/events";
+import 'footable/js/footable';
 
 /**
- * @param {jQuery} $
- *
- * @typedef {object}             define.amd
- * @typedef {TablePagerFootable} TablePagerFootable
+ * Table Pager Footable class.
  */
-(function (factory) {
-    'use strict';
-
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(['jquery', 'footable/js/footable', '@fxp/jquery-table-pager'], factory);
-    } else {
-        // Browser globals
-        factory(jQuery);
-    }
-}(function ($) {
-    'use strict';
-
+export default class TablePagerFootable extends BasePlugin
+{
     /**
-     * Action on pager refreshed.
+     * Constructor.
      *
-     * @param {jQuery.Event|Event} event
-     *
-     * @typedef {TablePagerFootable} Event.data The table pager footable instance
-     *
-     * @private
+     * @param {HTMLElement} element The DOM element
+     * @param {object}      options The options
      */
-    function onPagerRefreshed(event) {
-        var footable = event.data.$table.data('footable');
+    constructor(element, options = {}) {
+        super(element, $.extend(true, {}, TablePagerFootable.defaultOptions, options));
 
-        if (undefined === footable) {
-            return;
-        }
-
-        footable.resize();
-        footable.redraw();
-    }
-
-    /**
-     * Action on footable row detail is updated.
-     *
-     * @param {jQuery.Event|Event} event
-     *
-     * @typedef {TablePagerFootable} Event.data   The table pager footable instance
-     * @typedef {jQuery}             Event.detail The table pager detail
-     *
-     * @private
-     */
-    function onFootableRowDetailUpdated(event) {
-        var self = event.data,
-            footable = self.$table.data('footable'),
-            $cols,
-            $detailNames,
-            $col,
-            $detail,
-            $icon,
-            i;
-
-        if (undefined === footable) {
-            return;
-        }
-
-        $cols = self.$table.find('> thead > tr:last > th:not(:visible)');
-        $detailNames = $(event.detail).find('div.footable-row-detail-name');
-
-        if ($cols.length !== $detailNames.length) {
-            return;
-        }
-
-        for (i = 0; i < $detailNames.length; i += 1) {
-            $col = $cols.eq(i);
-            $detail = $detailNames.eq(i);
-            $icon = $col.find('> i.table-sort-icon');
-
-            if (undefined !== $col.attr('data-col-name')) {
-                $detail.attr('data-col-name', $col.attr('data-col-name'));
-            }
-
-            if (undefined !== $col.attr('data-table-pager-sortable')) {
-                $detail.attr('data-table-pager-sortable', $col.attr('data-table-pager-sortable'));
-            }
-
-            if (undefined !== $col.attr('data-table-sort')) {
-                $detail.attr('data-table-sort', $col.attr('data-table-sort'));
-            }
-
-            if ($icon.length > 0) {
-                $detail.append($icon.clone());
-            }
-        }
-    }
-
-    // TABLE PAGER FOOTABLE CLASS DEFINITION
-    // =====================================
-
-    /**
-     * @constructor
-     *
-     * @param {string|elements|object|jQuery} element
-     *
-     * @this TablePagerFootable
-     */
-    var TablePagerFootable = function (element) {
-        this.$element = $(element);
-        this.$table   = $('#' + this.$element.attr('data-table-id'));
+        this.$table = $('#' + this.$element.attr('data-table-id'));
 
         this.$table
             .on('table-pager-refreshed.fxp.tablepagerfootable', null, this, onPagerRefreshed)
             .on('footable_row_detail_updated.fxp.tablepagerfootable', null, this, onFootableRowDetailUpdated);
-    },
-        old;
+    }
 
     /**
-     * Destroy instance.
-     *
-     * @this TablePagerFootable
+     * Destroy the instance.
      */
-    TablePagerFootable.prototype.destroy = function () {
+    destroy() {
         this.$table
             .off('table-pager-refreshed.fxp.tablepagerfootable', onPagerRefreshed)
             .off('footable_row_detail_updated.fxp.tablepagerfootable', onFootableRowDetailUpdated);
 
-        this.$element.removeData('st.tablepagerfootable');
-    };
-
-
-    // TABLE PAGER FOOTABLE OVERRIDE TABLE PAGER DEFAULT OPTIONS DEFINITION
-    // ====================================================================
-
-    TablePager.defaultOptions = {
-        selectors: {
-            sortable: TablePager.defaultOptions.selectors.sortable + ', > tbody > tr.footable-row-detail div.footable-row-detail-name[data-table-pager-sortable=true]'
-        }
-    };
-
-
-    // TABLE PAGER FOOTABLE PLUGIN DEFINITION
-    // ======================================
-
-    function Plugin(option) {
-        var args = Array.prototype.slice.call(arguments, 1);
-
-        return this.each(function () {
-            var $this = $(this),
-                data  = $this.data('st.tablepagerfootable');
-
-            if (!data && option === 'destroy') {
-                return;
-            }
-
-            if (!data) {
-                data = new TablePagerFootable(this);
-                $this.data('st.tablepagerfootable', data);
-            }
-
-            if (typeof option === 'string') {
-                data[option].apply(data, args);
-            }
-        });
+        super.destroy();
     }
+}
 
-    old = $.fn.tablePagerFootable;
+/**
+ * Defaults options.
+ */
+TablePagerFootable.defaultOptions = {
+};
 
-    $.fn.tablePagerFootable             = Plugin;
-    $.fn.tablePagerFootable.Constructor = TablePagerFootable;
+TablePager.defaultOptions = {
+    selectors: {
+        sortable: TablePager.defaultOptions.selectors.sortable + ', > tbody > tr.footable-row-detail div.footable-row-detail-name[data-table-pager-sortable=true]'
+    }
+};
 
-
-    // TABLE PAGER FOOTABLE NO CONFLICT
-    // ================================
-
-    $.fn.tablePagerFootable.noConflict = function () {
-        $.fn.tablePagerFootable = old;
-
-        return this;
-    };
-
-
-    // TABLE PAGER FOOTABLE DATA-API
-    // =============================
-
-    $(window).on('load', function () {
-        $('[data-table-pager="true"]').each(function () {
-            var $this = $(this);
-            Plugin.call($this, $this.data());
-        });
-    });
-
-}));
+pluginify('tablePagerFootable', 'fxp.tablepagerfootable', TablePagerFootable, true, '[data-table-pager="true"]');
