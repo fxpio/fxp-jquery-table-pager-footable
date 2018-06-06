@@ -7,6 +7,8 @@
  * file that was distributed with this source code.
  */
 
+import TablePager from '@fxp/jquery-table-pager';
+
 /*global define*/
 /*global jQuery*/
 /*global window*/
@@ -23,7 +25,7 @@
 
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['jquery', 'footable/js/footable', 'fxp-jquery-table-pager'], factory);
+        define(['jquery', 'footable/js/footable', '@fxp/jquery-table-pager'], factory);
     } else {
         // Browser globals
         factory(jQuery);
@@ -142,13 +144,11 @@
     // TABLE PAGER FOOTABLE OVERRIDE TABLE PAGER DEFAULT OPTIONS DEFINITION
     // ====================================================================
 
-    if (undefined !== $.fn.tablePager) {
-        $.fn.tablePager.Constructor.DEFAULTS = $.extend(true, $.fn.tablePager.Constructor.DEFAULTS, {
-            selectors: {
-                sortable: $.fn.tablePager.Constructor.DEFAULTS.selectors.sortable + ', > tbody > tr.footable-row-detail div.footable-row-detail-name[data-table-pager-sortable=true]'
-            }
-        });
-    }
+    TablePager.defaultOptions = {
+        selectors: {
+            sortable: TablePager.defaultOptions.selectors.sortable + ', > tbody > tr.footable-row-detail div.footable-row-detail-name[data-table-pager-sortable=true]'
+        }
+    };
 
 
     // TABLE PAGER FOOTABLE PLUGIN DEFINITION
