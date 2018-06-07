@@ -26,7 +26,7 @@ export default class TablePagerFootable extends BasePlugin
      * @param {object}      options The options
      */
     constructor(element, options = {}) {
-        super(element, $.extend(true, {}, TablePagerFootable.defaultOptions, options));
+        super(element, options);
 
         this.$table = $('#' + this.$element.attr('data-table-id'));
 
