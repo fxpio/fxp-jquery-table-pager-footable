@@ -28,9 +28,9 @@
   "engines": {},
   "main": "js/table-pager-footable.js",
   "dependencies": {
-    "@fxp/jquery-pluginify": "github:fxpio/fxp-jquery-pluginify#master",
-    "@fxp/jquery-table-pager": "github:fxpio/fxp-jquery-table-pager#master",
-    "footable": "github:fooplugins/FooTable#^2.0.3",
+    "@fxp/jquery-pluginify": "github:fxpio/fxp-jquery-pluginify#semver:^1.0.0",
+    "@fxp/jquery-table-pager": "github:fxpio/fxp-jquery-table-pager#semver:^1.0.0",
+    "footable": "github:fooplugins/FooTable#semver:^2.0.3",
     "jquery": "^2.2.0||^3.2.0"
   },
   "devDependencies": {
