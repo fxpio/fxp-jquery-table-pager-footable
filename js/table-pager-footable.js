@@ -10,7 +10,7 @@
 import pluginify from '@fxp/jquery-pluginify';
 import BasePlugin from '@fxp/jquery-pluginify/js/plugin';
 import $ from "jquery";
-import TablePager from "@fxp/jquery-table-pager/js/table-pager";
+import FxpTablePager from "@fxp/jquery-table-pager/js/table-pager";
 import {onFootableRowDetailUpdated, onPagerRefreshed} from "./utils/events";
 import 'footable/js/footable';
 
@@ -53,9 +53,9 @@ export default class TablePagerFootable extends BasePlugin
 TablePagerFootable.defaultOptions = {
 };
 
-TablePager.defaultOptions = {
+FxpTablePager.defaultOptions = {
     selectors: {
-        sortable: TablePager.defaultOptions.selectors.sortable + ', > tbody > tr.footable-row-detail div.footable-row-detail-name[data-table-pager-sortable=true]'
+        sortable: FxpTablePager.defaultOptions.selectors.sortable + ', > tbody > tr.footable-row-detail div.footable-row-detail-name[data-table-pager-sortable=true]'
     }
 };
 
