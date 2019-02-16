@@ -12,7 +12,7 @@ import 'font-awesome/less/font-awesome.less';
 import 'footable/less/footable.standalone.less';
 import '@fxp/jquery-table-pager/less/table-pager.less';
 import '@fxp/jquery-table-pager/less/table-sort.less';
-import '@fxp/jquery-table-pager/js/locale/table-pager-fr';
+import '@fxp/jquery-table-pager/js/locale/fr';
 import '../js/table-pager-footable';
 import $ from 'jquery';
 
